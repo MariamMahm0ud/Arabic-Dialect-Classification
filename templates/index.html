@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Dialect Prediction</title>
+    <style>
+        /* Style for the body element */
+        body {
+            background-color: rgba(255, 255, 255, 0.212); /* More transparent white background */
+
+            background-image: url('/static/bg8.jpg'); /* Background image for the body */
+            background-size: cover; /* Cover the entire viewport with the background image */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Do not repeat the background image */
+            display: flex; /* Use flexbox for alignment */
+            flex-direction: column; /* Arrange children in a column */
+            align-items: center; /* Center children horizontally */
+            justify-content: center; /* Center children vertically */
+            height: 100vh; /* Set the height to the full viewport height */
+            margin: 0; /* Remove default margin */
+            font-family: Arial, sans-serif; /* Set the font family */
+            color: #333; /* Set the text color */
+        }
+
+        /* Style for the main heading (h1) */
+        h1 {
+            background-color: rgba(255, 255, 255, 0.308); /* Semi-transparent white background */
+            padding: 20px; /* Padding inside the element */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow for a 3D effect */
+            text-align: start; /* Center the text inside the h1 element */
+            width: 30%; /* Width of the h1 element (80% of its container) */
+        }
+
+        /* Style for the form element */
+        form {
+            background-color: rgba(255, 255, 255, 0.322); /* Semi-transparent white background */
+            padding: 20px; /* Padding inside the element */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.199); /* Light shadow for a 3D effect */
+            text-align: center; /* Center the text inside the form element */
+            margin-top: 20px; /* Space above the form */
+            width: 100%; /* Width of the form (80% of its container) */
+        }
+
+        /* Style for the text input field */
+        input[type="text"] {
+            width: 80%; /* Width of the input field (80% of its container) */
+            padding: 10px; /* Padding inside the input field */
+            margin: 10px 0; /* Margin above and below the input field */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Slightly rounded corners */
+        }
+
+        /* Style for the submit button */
+        input[type="submit"] {
+            padding: 10px 20px; /* Padding inside the button */
+            border: none; /* No border */
+            border-radius: 5px; /* Slightly rounded corners */
+            background-color: #4CAF50; /* Green background color */
+            color: white; /* White text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+        }
+
+        /* Change the background color of the submit button on hover */
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Slightly darker green on hover */
+        }
+
+        /* Style for the prediction and error messages (h2 elements) */
+        h2 {
+            background-color: rgba(255, 255, 255, 0.575); /* Semi-transparent white background */
+            padding: 20px; /* Padding inside the element */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.233); /* Light shadow for a 3D effect */
+            margin-top: 20px; /* Space above the h2 element */
+            text-align: center; /* Center the text inside the h2 element */
+            width: 100%; /* Width of the h2 element (80% of its container) */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">مرحبا بك في توقع اللهجة العربية</h1>
+    <div class="form-container">
+        <form action="/predict" method="post">
+            <label for="text">أدخل جملة للتنبؤ بها:</label><br>
+            <input type="text" id="text" name="text"><br><br>
+            <input type="submit" value="التنبؤ">
+        </form>
+        {% if prediction %}
+            {% if prediction == 'EG' %}
+                <h2 class="prediction">التنبؤ: مصرى</h2>
+            {% elif prediction == 'LB' %}
+                <h2 class="prediction">التنبؤ: لبنانى</h2>
+            {% elif prediction == 'SD' %}
+                <h2 class="prediction">التنبؤ: سودانى</h2>
+            {% elif prediction == 'MA' %}
+                <h2 class="prediction">التنبؤ: مغربى</h2>
+            {% elif prediction == 'LY' %}
+                <h2 class="prediction">التنبؤ: ليبى</h2>
+            {% endif %}
+        {% endif %}
+        {% if error %}
+        <h2 class="error">خطأ: {{ error }}</h2>
+        {% endif %}
+</body>
+</html>
