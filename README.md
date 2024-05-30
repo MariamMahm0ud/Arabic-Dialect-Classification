@@ -31,7 +31,7 @@ The dataset used for this project was provided by the Qatar Computing Research I
 The project achieves impressive accuracy in dialect classification, providing valuable insights into the linguistic diversity of the Arabic language. Through comprehensive evaluation and comparison of different models.
 In the deployment phase, the Multinomial Naive Bayes model trained with CountVectorizer achieved an impressive accuracy of 82%. This model efficiently predicted the Arabic dialect given the input text, showcasing its effectiveness in real-world scenarios.
 
-![Alt text](Screenshot 2024-05-30 192533.png)
+![Alt text](https://github.com/MariamMahm0ud/MariamMahm0ud-Arabic-Dialect-Classification/blob/master/Screenshot%202024-05-30%20192533.png)
 
 
 
