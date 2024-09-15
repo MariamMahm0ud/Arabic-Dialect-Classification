@@ -1,1 +1,0 @@
-web: python deplyment_flask.py
